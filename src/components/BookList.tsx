@@ -1,14 +1,16 @@
 import booksData from './../../books.json';
 
-console.log(booksData); 
-
-
 const BookList = () => {
+  // Filtrera böcker som har "Fiction" som kategori
+  const fictionBooks = booksData.filter(book => 
+    book.volumeInfo.categories && book.volumeInfo.categories.includes("Fiction")
+  );
+
   return (
     <div>
-      <h1>Books</h1>
+      <h1>Fiction Books</h1>
       <ul>
-        {booksData.map((book, index) => (
+        {fictionBooks.map((book, index) => (
           <li key={index}>{book.volumeInfo.title}</li>
         ))}
       </ul>
