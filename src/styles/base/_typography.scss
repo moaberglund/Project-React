@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
+
+$urbanist: 'Urbanist', sans-serif;
+$roboto: 'Roboto', sans-serif;
+$raleway: 'Raleway', sans-serif;
+$rubik: 'Rubik', sans-serif;
+$open-sans: 'Open Sans', sans-serif;
+
+* {
+    font-family: $urbanist;
+}
