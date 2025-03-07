@@ -4,5 +4,9 @@
 @use 'base/reset';
 @use 'base/typography';
 
+@use 'components/booksmall';
 @use 'components/button';
 @use 'components/form';
+
+@use 'layout/flex';
+@use 'layout/grid';
