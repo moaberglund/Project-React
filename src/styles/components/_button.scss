@@ -1,0 +1,10 @@
+@use './../abstracts/variables';
+
+button {
+    padding: 0.8em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
