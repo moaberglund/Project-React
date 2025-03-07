@@ -1,7 +1,7 @@
 interface BookSmallProps {
-    smallThumbnail: string;
+    thumbnail: string | undefined;
     title: string;
-    authors: Array<string>;
+    authors: Array<string> | string;
     publishedDate: string;
     pageCount: number;
 }
