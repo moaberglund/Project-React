@@ -14,7 +14,9 @@ const BookList = () => {
       <div className='grid'>
 
         {fictionBooks.map((book, index) => (
-          <BookSmall thumbnail={book.volumeInfo.imageLinks?.smallThumbnail}
+          <BookSmall
+            id={book.id}
+            thumbnail={book.volumeInfo.imageLinks?.smallThumbnail}
             title={book.volumeInfo.title}
             authors={book.volumeInfo.authors}
             publishedDate={book.volumeInfo.publishedDate}

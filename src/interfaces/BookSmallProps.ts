@@ -1,4 +1,5 @@
 interface BookSmallProps {
+    id: string;
     thumbnail: string | undefined;
     title: string;
     authors: Array<string> | string;
