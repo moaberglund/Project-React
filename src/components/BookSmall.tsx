@@ -9,7 +9,7 @@ const BookSmall = ({ thumbnail, title, authors, publishedDate, pageCount }: Book
                 <div className="flex-1">
                     <img src={thumbnail} alt="Book cover" />
                 </div>
-                <div className="flex-2">
+                <div className="flex-3">
                     <h1>{title}</h1>
                     <h2>by {displayAuthor}</h2>
                     <p>{publishedDate}</p>
