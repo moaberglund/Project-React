@@ -11,7 +11,7 @@ const AppHeader = () => {
                 <nav>
                     <ul>
                         <li><NavLink to={"/"}><FaHouse /> Home</NavLink></li>
-                        <li><NavLink to={"/"}><FaRegUser /></NavLink></li>
+                        <li><NavLink to={"/user/:id"}><FaRegUser /></NavLink></li>
                     </ul>
                 </nav>
             </header>
