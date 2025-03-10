@@ -3,6 +3,9 @@ import HomePage from "./pages/HomePage";
 import BookPage from "./pages/book/[id]";
 import UserPage from "./pages/user/[id]";
 import MainLayout from "./layouts/MainLayout";
+import SignUpPage from "./pages/user/SignUpPage";
+import LoginPage from "./pages/user/LoginPage";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 export const router = createBrowserRouter([
     {
@@ -19,7 +22,19 @@ export const router = createBrowserRouter([
             },
             {
                 path: "/user/:id",
-                element: <UserPage />
+                element: (
+                    <ProtectedRoute>
+                        <UserPage />
+                    </ProtectedRoute>
+                )
+            },
+            {
+                path: "/user/signup",
+                element: <SignUpPage />
+            },
+            {
+                path: "/user/login",
+                element: <LoginPage />
             }
 
         ]
