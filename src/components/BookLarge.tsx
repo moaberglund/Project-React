@@ -14,7 +14,7 @@ const BookLarge = ({ id, thumbnail, title, authors, publishedDate, pageCount, de
                     <p>{pageCount} pages</p>
                     <p>Published {publishedDate} by {publisher}</p>
                     <p>{description}</p>
-                    <p>Categories: {categories.join(", ")}</p>
+                    <p>Categories: {categories?.join(", ")}</p>
                 </div>
 
             </div>
