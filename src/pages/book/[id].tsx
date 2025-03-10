@@ -1,16 +1,15 @@
 import booksData from './../../../books.json';
 import BookLarge from "../../components/BookLarge"
-import { useNavigate, useParams } from 'react-router-dom';
+import { NavLink, useNavigate, useParams } from 'react-router-dom';
+import CreateBookReview from '../../components/CreateBookReview';
 
 
 const BookPage = () => {
 
+    const user = localStorage.getItem("user");
     const { id } = useParams<{ id: string }>();  // Hämtar id från URL
     const book = booksData.find(book => book.id === id);  // Hitta boken från JSON eller API
     const navigate = useNavigate();
-
-    console.log(id);
-    console.log(book);
 
     if (!book) {
         return <p>Book not found</p>;
@@ -29,7 +28,14 @@ const BookPage = () => {
                 publisher={book.volumeInfo.publisher}
                 categories={book.volumeInfo.categories}
             />
+            {user ? <CreateBookReview /> : <NavLink to="/login">Login to create a review</NavLink>}
+
+
             <button onClick={() => navigate(-1)}>Back</button>
+
+
+
+
         </>
     )
 }
