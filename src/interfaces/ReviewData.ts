@@ -6,8 +6,8 @@ interface ReviewData {
     user: string | object;
     book_id: string;
     likes?: number;
-    createdAt: Date;
-    updatedAt: Date;
+    createdAt?: Date;
+    updatedAt?: Date;
 }
 
 export default ReviewData;
