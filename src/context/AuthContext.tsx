@@ -47,8 +47,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const login = async (credentials: LoginCredentials) => {
         try {
-            // First login request
-            const loginRes = await fetch(`${API}/user/login`, {
+            const res = await fetch(`${API}/user/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -56,31 +55,25 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 body: JSON.stringify(credentials)
             });
 
-            if (!loginRes.ok) {
+            if (!res.ok) {
                 throw new Error('Login failed');
             }
 
-            const { token } = await loginRes.json();
+            // Hämta token och user från API
+            const { token, user }: AuthResponse = await res.json();
+
+            // Spara token och user i localStorage
             localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(user));
 
-            // Now fetch user data using the token
-            const userRes = await fetch(`${API}/user/profile`, {
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            });
-
-            if (!userRes.ok) {
-                throw new Error('Failed to fetch user data');
-            }
-
-            const userData = await userRes.json();
-            setUser(userData);
+            // Uppdatera state
+            setUser(user);
 
         } catch (err) {
             throw err;
         }
-    }
+    };
+
 
     const logout = () => {
         localStorage.removeItem('token');
@@ -89,41 +82,30 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 
     const checkToken = async () => {
         const token = localStorage.getItem('token');
+        const storedUser = localStorage.getItem('user');
 
-        if (!token) {
+        if (!token || !storedUser) {
             setLoading(false);
             return;
         }
 
         try {
-
             setLoading(true);
-
-            const res = await fetch(`${API}/user/validate`, {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + token
-                }
-            });
-
-            if (res.ok) {
-                const data = await res.json();
-                setUser(data.user);
-            }
-
+            setUser(JSON.parse(storedUser));
         } catch (err) {
             localStorage.removeItem('token');
+            localStorage.removeItem('user');
             setUser(null);
-        }finally {
+        } finally {
             setLoading(false);
         }
-    }
+    };
+
 
     useEffect(() => {
         checkToken();
     }, []);
-    
+
     return (
         <AuthContext.Provider value={{ user, register, login, logout, loading }}>
             {children}
