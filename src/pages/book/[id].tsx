@@ -2,6 +2,7 @@ import booksData from './../../../books.json';
 import BookLarge from "../../components/BookLarge"
 import { NavLink, useNavigate, useParams } from 'react-router-dom';
 import CreateBookReview from '../../components/CreateBookReview';
+import BookShelfButton from '../../components/BookshelfButton';
 
 
 const BookPage = () => {
@@ -28,6 +29,9 @@ const BookPage = () => {
                 publisher={book.volumeInfo.publisher}
                 categories={book.volumeInfo.categories}
             />
+
+            {user ? <BookShelfButton bookId={book.id} /> : <button><NavLink to={"/user/login"}>Want to Read</NavLink></button> }
+
             {user ? <CreateBookReview /> : <NavLink to="/login">Login to create a review</NavLink>}
 
 
