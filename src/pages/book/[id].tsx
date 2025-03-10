@@ -1,12 +1,13 @@
 import booksData from './../../../books.json';
 import BookLarge from "../../components/BookLarge"
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const BookPage = () => {
 
     const { id } = useParams<{ id: string }>();  // Hämtar id från URL
     const book = booksData.find(book => book.id === id);  // Hitta boken från JSON eller API
+    const navigate = useNavigate();
 
     console.log(id);
     console.log(book);
@@ -28,6 +29,7 @@ const BookPage = () => {
                 publisher={book.volumeInfo.publisher}
                 categories={book.volumeInfo.categories}
             />
+            <button onClick={() => navigate(-1)}>Back</button>
         </>
     )
 }
