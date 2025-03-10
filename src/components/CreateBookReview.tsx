@@ -92,7 +92,7 @@ const CreateBookReview = () => {
                     validationErrors[prop] = error.message;
                 });
                 setError(validationErrors);
-                return; 
+                return;
             }
 
         } finally {
@@ -103,45 +103,44 @@ const CreateBookReview = () => {
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="rating">Rating</label>
-                    <select
-                        id="rating"
-                        name="rating"
-                        value={reviewData.rating}
-                        onChange={(e) => setReviewData({ ...reviewData, rating: parseInt(e.target.value) })}
-                        className="form-control"
-                    >
-                        <option value="1">⭐</option>
-                        <option value="2">⭐⭐</option>
-                        <option value="3">⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐</option>
-                        <option value="5">⭐⭐⭐⭐⭐</option>
-                    </select>
-                    {error.rating && <p className="error-message">{error.rating}</p>}
-                </div>
-                <div className="form-group">
-                    <label htmlFor="title">Title</label>
-                    <input
-                        id="title"
-                        name="title"
-                        value={reviewData.title}
-                        onChange={(e) => setReviewData({ ...reviewData, title: e.target.value })}
-                        className="form-control"
-                    />
-                    {error.title && <p className="error-message">{error.title}</p>}
-                </div>
-                <div className="form-group">
-                    <label htmlFor="text">Text</label>
-                    <textarea
-                        id="text"
-                        name="text"
-                        value={reviewData.text}
-                        onChange={(e) => setReviewData({ ...reviewData, text: e.target.value })}
-                        className="form-control"
-                    />
-                    {error.text && <p className="error-message">{error.text}</p>}
-                </div>
+
+
+                <select
+                    id="rating"
+                    name="rating"
+                    value={reviewData.rating}
+                    onChange={(e) => setReviewData({ ...reviewData, rating: parseInt(e.target.value) })}
+                    className="form-control"
+                >
+                    <option value="1">⭐</option>
+                    <option value="2">⭐⭐</option>
+                    <option value="3">⭐⭐⭐</option>
+                    <option value="4">⭐⭐⭐⭐</option>
+                    <option value="5">⭐⭐⭐⭐⭐</option>
+                </select>
+                {error.rating && <p className="error-message">{error.rating}</p>}
+
+
+                <input
+                placeholder="Review Title"
+                    id="title"
+                    name="title"
+                    value={reviewData.title}
+                    onChange={(e) => setReviewData({ ...reviewData, title: e.target.value })}
+                    className="form-control"
+                />
+                {error.title && <p className="error-message">{error.title}</p>}
+
+                <textarea
+                    placeholder="Review Text"
+                    id="text"
+                    name="text"
+                    value={reviewData.text}
+                    onChange={(e) => setReviewData({ ...reviewData, text: e.target.value })}
+                    className="form-control"
+                />
+                {error.text && <p className="error-message">{error.text}</p>}
+
                 <button type="submit" className="btn btn-primary" disabled={loading}>
                     {loading ? "Loading..." : "Create Review"}
                 </button>
