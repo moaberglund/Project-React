@@ -1,0 +1,21 @@
+@use "./../abstracts/variables";
+
+header {
+    background-color: variables.$header-background;
+    padding: 0.5em 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  ul {
+    list-style: none;
+    li {
+        display: inline-block;
+        margin-right: 1em;
+
+        a {
+            text-decoration: none;
+            color: variables.$black;
+        }
+    }
+  }
+}
