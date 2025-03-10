@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const LoginPage = () => {
 
@@ -15,10 +15,10 @@ const LoginPage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if(user) {
+    if (user) {
       navigate(`/user/${user._id}`);
     }
-}, [user]);
+  }, [user]);
 
 
   // Functions
@@ -30,7 +30,7 @@ const LoginPage = () => {
 
     try {
       await login({ username, password });
-      
+
       navigate(`/user/${user?._id}`);
 
 
@@ -86,6 +86,8 @@ const LoginPage = () => {
           </button>
 
         </form>
+
+        <p>Not a user yet?  <NavLink to="/user/signup">Create an account here</NavLink></p>
       </div>
     </div>
   )
