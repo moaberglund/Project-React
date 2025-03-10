@@ -10,7 +10,6 @@ const BookShelfButton: React.FC<Props> = ({ bookId }) => {
 
     const token = localStorage.getItem("token");
 
-
     const handleAddToShelf = async () => {
         setLoading(true);
         try {
