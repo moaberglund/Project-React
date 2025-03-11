@@ -60,25 +60,28 @@ const BookPage = () => {
         <>
             <BookLarge
                 id={book.id}
-                thumbnail={book.volumeInfo?.imageLinks?.smallThumbnail}
+                thumbnail={book.volumeInfo?.imageLinks?.thumbnail}
                 title={book.volumeInfo?.title}
                 authors={book.volumeInfo?.authors}
                 publishedDate={book.volumeInfo?.publishedDate}
                 pageCount={book.volumeInfo?.pageCount}
-                description={book.volumeInfo?.description}
+                // Allow React to render HTML from the API
+                description={<span dangerouslySetInnerHTML={{ __html: book.volumeInfo?.description }} />}
                 publisher={book.volumeInfo?.publisher}
                 categories={book.volumeInfo?.categories}
             />
 
             {user ? (
-                <BookShelfButton bookId={book.id} />
+                <div style={{ marginTop: '2em', marginBottom: '2em' }}>
+                    <BookShelfButton bookId={book.id} />
+                </div>
             ) : (
                 <button>
                     <NavLink to={"/user/login"}>Want to Read</NavLink>
                 </button>
             )}
 
-            {user ? <CreateBookReview /> : <NavLink to="/login">Login to create a review</NavLink>}
+            {user ? <CreateBookReview /> : <NavLink to="/user/login">Login to create a review</NavLink>}
 
             <h2>Reviews</h2>
             {reviews.length > 0 ? (
