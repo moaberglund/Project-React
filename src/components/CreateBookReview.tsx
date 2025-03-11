@@ -141,7 +141,7 @@ const CreateBookReview = () => {
                 />
                 {error.text && <p className="error-message">{error.text}</p>}
 
-                <button type="submit" className="btn btn-primary" disabled={loading}>
+                <button type="submit" className="btn btn-create" disabled={loading}>
                     {loading ? "Loading..." : "Create Review"}
                 </button>
 
