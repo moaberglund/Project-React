@@ -1,0 +1,30 @@
+@use './../abstracts/variables';
+
+.book-large {
+
+    img {
+        width: 75%;
+        height: auto;
+        border-radius: 10px;
+    }
+    h1 {
+        font-size: 2.2em;
+        margin-bottom: 0.1em;
+    }
+    h2 {
+        font-size: 1.6em;
+        font-weight: 600;
+        color: variables.$darkgrey;
+        margin-bottom: 0.5em;
+    }
+
+    .description {
+        padding: 1em 2em 1em 0;
+        margin: 1em 0;
+        border-top: 1px solid variables.$grey;
+        border-bottom: 1px solid variables.$grey;
+    }
+    .categories {
+        margin: 1em 0;
+    }
+}
