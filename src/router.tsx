@@ -6,6 +6,7 @@ import MainLayout from "./layouts/MainLayout";
 import SignUpPage from "./pages/user/SignUpPage";
 import LoginPage from "./pages/user/LoginPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import UpdateBookReviewPage from "./pages/review/update";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,13 @@ export const router = createBrowserRouter([
             {
                 path: "/user/login",
                 element: <LoginPage />
+            },
+            {
+                path: "review/:id",
+                element:
+                    <ProtectedRoute>
+                        <UpdateBookReviewPage />
+                    </ProtectedRoute>
             }
 
         ]
