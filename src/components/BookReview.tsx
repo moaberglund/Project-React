@@ -1,10 +1,12 @@
 
 import { useEffect, useState } from "react";
 import ReviewData from "../interfaces/ReviewData";
+import { useNavigate } from "react-router-dom";
 
 const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt, updatedAt }: ReviewData) => {
     const [username, setUsername] = useState<string>("Unknown user");
     const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+    const navigate = useNavigate();
 
     // Fetch current user ID from localStorage
     useEffect(() => {
@@ -84,7 +86,8 @@ const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt,
 
                 {currentUserId === user._id && (
                     <>
-                        <button onClick={deleteReview}>Delete Review</button>
+                        <button onClick={() => navigate(`/review/${_id}`)}>Edit</button>
+                        <button onClick={deleteReview}>Delete</button>
                     </>
                 )}
 
