@@ -1,0 +1,19 @@
+@use './../abstracts/variables';
+
+.quote {
+    background-color: variables.$quote-pink;
+    padding: 1em;
+    border-radius: 15px;
+
+    h2 {
+        font-weight: 600;
+    }
+    ol {
+        margin: 1em 0 1em 1em;
+
+        li {
+            line-height: 1.8em;
+
+        }
+    }
+}
