@@ -45,13 +45,13 @@ const BookSearch = () => {
     }, [searchQuery]);
 
     return (
-        <div>
+        <div className="book-search">
             <h2>Search for Books</h2>
             <input
                 type="text"
                 value={searchQuery}
                 onChange={handleSearchChange}
-                placeholder="Search by title"
+                placeholder="🔍 Search by title"
             />
             {loading && <p>Loading...</p>}
             {error && <p>{error}</p>}
