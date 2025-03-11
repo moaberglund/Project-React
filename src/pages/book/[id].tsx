@@ -5,6 +5,7 @@ import BookShelfButton from "../../components/BookshelfButton";
 import BookReview from "../../components/BookReview";
 import { useEffect, useState } from "react";
 import ReviewData from "../../interfaces/ReviewData";
+import { FaChevronLeft } from "react-icons/fa6";
 
 const BookPage = () => {
     const user = localStorage.getItem("user");
@@ -83,14 +84,14 @@ const BookPage = () => {
 
             {user ? <CreateBookReview /> : <NavLink to="/user/login">Login to create a review</NavLink>}
 
-            <h2>Reviews</h2>
+            <h2 style={{ marginTop: '1em', marginBottom: '0.5em' }}>Reviews</h2>
             {reviews.length > 0 ? (
                 reviews.map((review) => <BookReview key={review._id} {...review} />)
             ) : (
                 <p>No reviews yet.</p>
             )}
 
-            <button onClick={() => navigate(-1)}>Back</button>
+            <button style={{ marginTop: '2em', marginBottom: '2em' }} className="btn-back" onClick={() => navigate(-1)}><FaChevronLeft /> Back</button>
         </>
     );
 };
