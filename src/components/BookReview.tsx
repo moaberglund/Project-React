@@ -4,6 +4,16 @@ import ReviewData from "../interfaces/ReviewData";
 
 const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt, updatedAt }: ReviewData) => {
     const [username, setUsername] = useState<string>("Unknown user");
+    const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+
+    // Fetch current user ID from localStorage
+    useEffect(() => {
+        const user = localStorage.getItem("user"); // Get the logged-in user info
+        if (user) {
+            const parsedUser = JSON.parse(user);  // Parse user object
+            setCurrentUserId(parsedUser._id);  // Set the current user ID
+        }
+    }, []);
 
     // Function to fetch username from API if user is not an object
     const fetchUsername = async (userId: string) => {
@@ -32,6 +42,32 @@ const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt,
         return "★".repeat(rating) + "☆".repeat(5 - rating); // 5 is max
     };
 
+    // Function to delete a review
+    const deleteReview = async () => {
+        const token = localStorage.getItem("token");
+
+        try {
+            const response = await fetch(`https://read-y-api.onrender.com/review/${_id}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                alert("Review deleted successfully!");
+            } else {
+                const errorData = await response.json();
+                alert(errorData.message || "Failed to delete the review.");
+            }
+        } catch (error) {
+            console.error("Error deleting review:", error);
+            alert("An error occurred while deleting the review.");
+        }
+    };
+
+
     return (
         <div className="review">
             <div className="flex-1">
@@ -45,6 +81,12 @@ const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt,
                 <p>{likes} likes</p>
                 <p>Created: {createdAt ? new Date(createdAt).toLocaleDateString() : "Unknown"}</p>
                 <p>Updated: {updatedAt ? new Date(updatedAt).toLocaleDateString() : "Unknown"}</p>
+
+                {currentUserId === user._id && (
+                    <>
+                        <button onClick={deleteReview}>Delete Review</button>
+                    </>
+                )}
 
                 <button>Like</button>
             </div>
