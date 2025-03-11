@@ -1,9 +1,15 @@
 
 .booksmall {
-    width: 300px;
+    max-width: 100%;
+    width: 450px;
     padding: 0.5em;
     line-height: 1.5em;
     border-bottom: 1px solid grey;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
     img {
         width: 100%;
         height: auto;
