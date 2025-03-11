@@ -8,15 +8,19 @@ const AppHeader = () => {
     return (
         <>
             <header>
-                <h1>read-y</h1>
+                <div className="wrapper">
+                    <div className="header">
+                        <NavLink to={"/"}> <h1>read-y</h1></NavLink>
 
-                <nav>
-                    <ul>
-                        <li><NavLink to={"/"}><FaHouse /> Home</NavLink></li>
+                        <nav>
+                            <ul>
+                                <li><NavLink to={"/"}><FaHouse /> Home</NavLink></li>
 
-                        <li><NavLink to={`/user/${user?._id}`}><FaRegUser /></NavLink></li>
-                    </ul>
-                </nav>
+                                <li><NavLink to={`/user/${user?._id}`}><FaRegUser /></NavLink></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </header>
         </>
     )
