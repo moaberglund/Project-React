@@ -5,11 +5,13 @@ import AppHeader from "../components/AppHeader"
 const MainLayout = () => {
   return (
     <>
-    <AppHeader />
-    <main>
-        <Outlet />
-    </main>
-    
+      <AppHeader />
+      <main>
+        <div className="wrapper">
+          <Outlet />
+        </div>
+      </main>
+
     </>
   )
 }
