@@ -7,7 +7,6 @@ form {
   justify-content: center;
   width: 100%;
   max-width: 700px;
-  margin: 0 auto;
 
   input {
     width: 100%;
@@ -43,5 +42,10 @@ form {
     background-color: variables.$white;
     color: variables.$black;
     font-size: 16px;
+    cursor: pointer;
+
+    option {
+      cursor: pointer;
+    }
   }
 }
