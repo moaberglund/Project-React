@@ -36,7 +36,7 @@ const BookShelfButton: React.FC<Props> = ({ bookId }) => {
     return (
         <div>
 
-            <button onClick={handleAddToShelf} disabled={loading}>
+            <button className="want-to-read" onClick={handleAddToShelf} disabled={loading}>
                 {loading ? "Loading..." : "Want to Read"}
             </button>
 
