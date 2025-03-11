@@ -1,0 +1,7 @@
+@use './../abstracts/variables';
+
+.user-info {
+    background-color: variables.$pistachio;
+    padding: 1em;
+    margin-bottom: 1em;
+}
