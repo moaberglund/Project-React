@@ -1,11 +1,12 @@
-import BookList from "../components/BookList"
+import BookSearch from "../components/BookSearch"
 
 const HomePage = () => {
   return (
     <div>
-        <h1>Homepage</h1>
+      <h1>Homepage</h1>
 
-        <BookList />
+      <BookSearch />
+
     </div>
   )
 }
