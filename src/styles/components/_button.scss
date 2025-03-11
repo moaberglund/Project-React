@@ -8,3 +8,15 @@ button {
     font-size: 16px;
     font-weight: 600;
 }
+
+.want-to-read {
+    background-color: variables.$read-green;
+    color: variables.$white;
+}
+
+.btn-create {
+    margin: 1em 0;
+    padding: 1.1em;
+    background-color: variables.$black;
+    color: variables.$white;
+}
