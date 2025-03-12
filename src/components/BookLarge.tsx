@@ -5,6 +5,9 @@ const BookLarge = ({ id, thumbnail, title, authors, publishedDate, pageCount, de
         <>
             <div id={id} className="flex book-large">
 
+                <div className="flex-1">
+                    <img src={thumbnail} alt="Book cover" />
+                </div>
 
                 <div className="flex-3">
                     <h1>{title}</h1>
@@ -15,9 +18,7 @@ const BookLarge = ({ id, thumbnail, title, authors, publishedDate, pageCount, de
                     <p className="categories"><strong>Categories:</strong> {categories?.join(", ")}</p>
                 </div>
 
-                <div className="flex-1">
-                    <img src={thumbnail} alt="Book cover" />
-                </div>
+
 
             </div>
         </>
