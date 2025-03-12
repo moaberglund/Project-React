@@ -1,7 +1,7 @@
 import { FaPowerOff } from "react-icons/fa6";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import UserBookshelf from "../../components/UserBookShelf";
 
 
@@ -11,6 +11,7 @@ const UserPage = () => {
     const [loading, setLoading] = useState(true);
     const { id } = useParams<{ id: string }>();
     const [user, setUser] = useState<any>(null);
+    const navigate = useNavigate();
 
     //Fetch user data
     useEffect(() => {
@@ -63,6 +64,8 @@ const UserPage = () => {
                             {user?.city && user?.country ? ", " : ""}
                             {user?.country ?? ""}
                         </p>
+
+                        <button style={{marginTop: '1em'}} className="btn-green" onClick={() => navigate(`/user/update/${id}`)}>Fill out info</button>
                     </div>
                     <div>
                         <button className="btn-logout" onClick={logout}><FaPowerOff /></button>
