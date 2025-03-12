@@ -53,8 +53,6 @@ const LoginPage = () => {
       <div className="auth-form">
 
         <form onSubmit={handleSubmit}>
-          {error && <p className="error">{error}</p>}
-
 
           <input
             aria-label="username"
@@ -85,6 +83,8 @@ const LoginPage = () => {
             disabled={isLoading}>
             {isLoading ? 'Logging in...' : 'Login'}
           </button>
+
+          {error && <p style={{ color: "red", fontSize: "0.9em", margin: "1em 0 2em 0" }}>{error}</p>}
 
         </form>
 
