@@ -115,9 +115,9 @@ const UpdateBookReviewPage = () => {
                 <textarea name="text" id="text" value={review?.text} onChange={handleChange}></textarea>
                 {errors?.text && <p>{errors.text}</p>}
 
-                <div style={{ marginTop: "1em" }} className="flex">
-                    <button onClick={() => navigate(-1)}>Cancel</button>
-                    <button className="btn-update" type="submit">Update Review</button>
+                <div style={{ marginTop: "1em"}} className="grid">
+                    <button style={{ marginRight: "1em"}} onClick={() => navigate(-1)}>Cancel</button>
+                    <button style={{ marginLeft: "1em"}} className="btn-update" type="submit">Update Review</button>
 
                 </div>
             </form>
