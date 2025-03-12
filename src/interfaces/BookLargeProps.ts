@@ -1,7 +1,8 @@
+import { ReactNode } from "react";
 import BookSmallProps from "./BookSmallProps";
 
 interface BookLargeProps extends BookSmallProps {
-    description?: string;
+    description?: ReactNode;
     publisher?: string;
     categories?: Array<string>;
 }
