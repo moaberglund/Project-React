@@ -2,6 +2,7 @@ import { FaPowerOff } from "react-icons/fa6";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import UserBookshelf from "../../components/UserBookShelf";
 
 
 const UserPage = () => {
@@ -70,7 +71,8 @@ const UserPage = () => {
 
                 <div className="shelfs">
 
-                    <h2>My shelfs</h2>
+                    <h2>My Bookshelf</h2>
+                    <UserBookshelf />
 
                 </div>
 
