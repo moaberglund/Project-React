@@ -1,0 +1,22 @@
+@use './../abstracts/variables';
+
+.review {
+    padding: 1em;
+    border-radius: 10px;
+    background-color: variables.$lightgrey;
+    line-height: 1.6em;
+    .username {
+        color: variables.$read-green;
+    }
+    span {
+        font-size: 2em;
+    }
+
+    .dates {
+        margin: 1em 0;
+    }
+    .buttons {
+        gap: 1em;
+        display: flex;
+    }
+}
