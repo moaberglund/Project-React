@@ -1,4 +1,4 @@
-import { FaPowerOff } from "react-icons/fa6";
+import { FaGear, FaPowerOff } from "react-icons/fa6";
 import { useAuth } from "../../context/AuthContext";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -65,7 +65,7 @@ const UserPage = () => {
                             {user?.country ?? ""}
                         </p>
 
-                        <button style={{marginTop: '1em'}} className="btn-green" onClick={() => navigate(`/user/update/${id}`)}>Fill out info</button>
+                        <button style={{marginTop: '1em'}} className="btn-green" onClick={() => navigate(`/user/update/${id}`)}><FaGear /> Edit user</button>
                     </div>
                     <div>
                         <button className="btn-logout" onClick={logout}><FaPowerOff /></button>
