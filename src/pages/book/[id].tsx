@@ -67,7 +67,13 @@ const BookPage = () => {
                 publishedDate={book.volumeInfo?.publishedDate}
                 pageCount={book.volumeInfo?.pageCount}
                 // Allow React to render HTML from the API
-                description={<span dangerouslySetInnerHTML={{ __html: book.volumeInfo?.description }} />}
+                description={
+                    book.volumeInfo?.description ? (
+                        <span dangerouslySetInnerHTML={{ __html: book.volumeInfo.description }} />
+                    ) : (
+                        <span>No description available</span>
+                    )
+                }
                 publisher={book.volumeInfo?.publisher}
                 categories={book.volumeInfo?.categories}
             />
