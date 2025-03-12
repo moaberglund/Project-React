@@ -59,14 +59,13 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
                 throw new Error('Login failed');
             }
 
-            // Hämta token och user från API
+            // Get token and user from API
             const { token, user }: AuthResponse = await res.json();
 
-            // Spara token och user i localStorage
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(user));
 
-            // Uppdatera state
+            // Update state
             setUser(user);
 
         } catch (err) {
