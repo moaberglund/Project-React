@@ -45,7 +45,9 @@ const UpdateBookReviewPage = () => {
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement | HTMLTextAreaElement>) => {
-        setReview({ ...review, [e.target.name]: e.target.value });
+        if (review) {
+            setReview({ ...review, [e.target.name]: e.target.value });
+        }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -115,9 +117,9 @@ const UpdateBookReviewPage = () => {
                 <textarea name="text" id="text" value={review?.text} onChange={handleChange}></textarea>
                 {errors?.text && <p>{errors.text}</p>}
 
-                <div style={{ marginTop: "1em"}} className="grid">
-                    <button style={{ marginRight: "1em"}} onClick={() => navigate(-1)}>Cancel</button>
-                    <button style={{ marginLeft: "1em"}} className="btn-update" type="submit">Update Review</button>
+                <div style={{ marginTop: "1em" }} className="grid">
+                    <button style={{ marginRight: "1em" }} onClick={() => navigate(-1)}>Cancel</button>
+                    <button style={{ marginLeft: "1em" }} className="btn-update" type="submit">Update Review</button>
 
                 </div>
             </form>
