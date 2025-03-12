@@ -18,9 +18,9 @@ const BookshelfItem = ({ id, thumbnail, title, authors, publishedDate, pageCount
                         <h1>{title}</h1>
                     </NavLink>
                     <h2>by {displayAuthor}</h2>
-                    <p>{publishedDate}</p>
+                    <p>Publiced: {publishedDate}</p>
                     <p>{pageCount} pages</p>
-                    <button>{status}</button>
+                    <button style={{marginTop: '0.5em'}}>{status}</button>
                 </div>
 
             </div>
