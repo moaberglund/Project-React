@@ -37,7 +37,6 @@ const SignUpPage = () => {
       <div className="auth-form">
 
         <form onSubmit={handleSubmit}>
-          {error && <p className="error">{error}</p>}
 
           <input
             aria-label="username"
@@ -66,6 +65,8 @@ const SignUpPage = () => {
             disabled={isLoading}>
             {isLoading ? 'Signing up...' : 'Sign up'}
           </button>
+
+          {error && <p style={{ color: "red", fontSize: "0.9em", margin: "1em 0 2em 0"}}>{error}</p>}
 
         </form>
 
