@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import ReviewData from "../interfaces/ReviewData";
 import { useNavigate } from "react-router-dom";
+import LikeButton from "./LikeButton";
 
 const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt, updatedAt }: ReviewData) => {
     const [username, setUsername] = useState<string>("Unknown user");
@@ -92,12 +93,10 @@ const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt,
                         <>
                             <button onClick={() => navigate(`/review/${_id}`)}>Edit</button>
                             <button onClick={deleteReview}>Delete</button>
+
                         </>
                     )}
-
-                    <button>❤️</button>
-                    <p style={{ marginTop: "1em" }}>{likes} likes</p>
-
+                    {currentUserId && <LikeButton reviewId={_id} initialLikes={likes} />}
                 </div>
             </div>
         </div>
