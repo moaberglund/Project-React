@@ -7,7 +7,7 @@ const BookshelfItem = ({ id, thumbnail, title, authors, publishedDate, pageCount
     const displayAuthor = Array.isArray(authors) ? authors[0] : authors;
     return (
 <>
-            <div className="flex booksmall">
+            <div className="flex-row booksmall">
                 <div className="flex-1">
                     <NavLink to={`/book/${id}`}>
                         <img src={thumbnail} alt="Book cover" />
