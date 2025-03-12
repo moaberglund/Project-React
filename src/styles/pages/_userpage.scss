@@ -1,7 +1,18 @@
-@use './../abstracts/variables';
+@use "./../abstracts/variables";
 
-.user-info {
+.user-page {
+  .user-info {
     background-color: variables.$pistachio;
     padding: 1em;
     margin-bottom: 1em;
+    line-height: 1.7em;
+
+    h1 {
+      margin-bottom: 0.5em;
+    }
+  }
+
+  .shelfs {
+    padding: 1em;
+  }
 }
