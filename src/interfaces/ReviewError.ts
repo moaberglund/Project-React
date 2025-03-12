@@ -1,5 +1,5 @@
 interface ReviewError {
-    rating?: number;
+    rating?: string;
     title?: string;
     text?: string;
 }
