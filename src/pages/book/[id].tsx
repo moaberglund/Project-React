@@ -84,11 +84,11 @@ const BookPage = () => {
                 </div>
             ) : (
                 <button>
-                    <NavLink to={"/user/login"}>Want to Read</NavLink>
+                    <NavLink style={{ color: 'grey' }} to={"/user/login"}>Want to Read</NavLink>
                 </button>
             )}
 
-            {user ? <CreateBookReview /> : <NavLink to="/user/login">Login to create a review</NavLink>}
+            {user ? <CreateBookReview /> : <NavLink style={{ marginLeft: '1em', color: 'grey', textDecoration: 'none' }} to="/user/login">Login to create a review</NavLink>}
 
             <h2 style={{ marginTop: '1em', marginBottom: '0.5em' }}>Reviews</h2>
             {reviews.length > 0 ? (
