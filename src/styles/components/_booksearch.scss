@@ -1,12 +1,20 @@
 .book-search {
-    input {
-        max-width: 100%;
-        width: 400px;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
-        border-radius: 15px;
-        margin: 1em 0;
+  input {
+    max-width: 100%;
+    width: 400px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin: 1em 0;
+  }
+}
 
+//smaller screens
+@media (max-width: 768px) {
+  .book-search {
+    input {
+      width: 100%;
     }
+  }
 }
