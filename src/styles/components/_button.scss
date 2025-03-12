@@ -1,35 +1,39 @@
-@use './../abstracts/variables';
+@use "./../abstracts/variables";
 
 button {
-    padding: 0.8em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
+  padding: 0.8em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .want-to-read {
-    background-color: variables.$read-green;
-    color: variables.$white;
+  background-color: variables.$read-green;
+  color: variables.$white;
 }
 
 .btn-update {
-    @extend .want-to-read;
+  @extend .want-to-read;
+}
+
+.btn-green {
+  @extend .want-to-read;
 }
 
 .btn-create {
-    margin: 1em 0;
-    padding: 1.1em;
-    background-color: variables.$black;
-    color: variables.$white;
+  margin: 1em 0;
+  padding: 1.1em;
+  background-color: variables.$black;
+  color: variables.$white;
 }
 
 .btn-back {
-    width: 100px;
-    padding: 1.1em;
+  width: 100px;
+  padding: 1.1em;
 }
 
 .btn-logout {
-    float: right;
+  float: right;
 }
