@@ -1,24 +1,35 @@
-
 .flex {
-    display: flex;
-    gap: 3rem;
+  display: flex;
+  gap: 3rem;
+}
+.flex-row {
+  display: flex;
+  gap: 3rem;
+  flex-direction: row;
 }
 
 .flex-1 {
-    flex: 1;
+  flex: 1;
 }
 .flex-2 {
-    flex: 2;
+  flex: 2;
 }
 
 .flex-3 {
-    flex: 3;
+  flex: 3;
 }
 
 .flex-4 {
-    flex: 4;
+  flex: 4;
 }
 
 .flex-5 {
-    flex: 5;
+  flex: 5;
+}
+
+//smaller screens
+@media (max-width: 768px) {
+  .flex {
+    flex-direction: column;
+  }
 }
