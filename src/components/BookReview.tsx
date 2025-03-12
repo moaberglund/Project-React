@@ -4,7 +4,7 @@ import ReviewData from "../interfaces/ReviewData";
 import { useNavigate } from "react-router-dom";
 import LikeButton from "./LikeButton";
 
-const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt, updatedAt }: ReviewData) => {
+const BookReview = ({ _id, rating, title, text, user, likes, createdAt, updatedAt }: ReviewData) => {
     const [username, setUsername] = useState<string>("Unknown user");
     const [currentUserId, setCurrentUserId] = useState<string | null>(null);
     const navigate = useNavigate();
@@ -34,7 +34,7 @@ const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt,
     // UseEffect to fetch username if user is not an object
     useEffect(() => {
         if (typeof user === "object" && user !== null && "username" in user) {
-            setUsername(user.username);  // If user is an object, set username
+            setUsername((user as { username: string }).username);  // If user is an object, set username
         } else if (typeof user === "string") {
             fetchUsername(user);  // Om user is ID (string), get username
         }
@@ -89,7 +89,7 @@ const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt,
                 </div>
 
                 <div className="buttons">
-                    {currentUserId === user._id && (
+                    {typeof user === "object" && user !== null && currentUserId === (user as { _id: string })._id && (
                         <>
                             <button onClick={() => navigate(`/review/${_id}`)}>Edit</button>
                             <button onClick={deleteReview}>Delete</button>
