@@ -45,25 +45,40 @@ const UserPage = () => {
 
     return (
         <>
-            {loading && <p>Loading...</p>}
-            <div className="user-info">
-                {/*Firstname Lastname*/}
-                <h1> {user ? user.firstname : ""} {user ? user.lastname : ""}</h1>
+            <div className="user-page">
+                {loading && <p>Loading...</p>}
+                <div className="user-info grid">
 
-                {/*@username*/}
-                <p>@{user ? user.username : ""}</p>
+                    <div>
+                        {/*Firstname Lastname*/}
+                        <h1> {user ? user.firstname : ""} {user ? user.lastname : ""}</h1>
 
-                {/*City, Country*/}
-                <p>{user ? user.city : ""} {user ? user.country : ""}</p>
+                        {/*@username*/}
+                        <p>@{user ? user.username : ""}</p>
 
+                        {/*City, Country*/}
+                        <p>
+                            {user?.city ?? ""}
+                            {user?.city && user?.country ? ", " : ""}
+                            {user?.country ?? ""}
+                        </p>
+                    </div>
+                    <div>
+                        <button className="btn-logout" onClick={logout}><FaPowerOff /></button>
+                    </div>
+                </div>
+
+                <div className="shelfs">
+
+                    <h2>My shelfs</h2>
+
+                </div>
 
 
             </div>
 
-            <button className="logout" onClick={logout}><FaPowerOff /></button>
 
-            <h1>User page</h1>
-            <h2>My shelfs</h2>
+
         </>
     )
 }
