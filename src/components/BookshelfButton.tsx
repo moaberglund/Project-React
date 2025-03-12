@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
     bookId: string;
@@ -32,12 +32,23 @@ const BookShelfButton: React.FC<Props> = ({ bookId }) => {
         }
     };
 
+    useEffect(() => {
+        if (shelfStatus) {
+            const timer = setTimeout(() => {
+                setShelfStatus(null);
+            }, 3000); // time here is in milliseconds
+
+            return () => clearTimeout(timer); // Clear timer if component unmounts
+        }
+    }, [shelfStatus]);
+
 
     return (
         <div>
 
             <button className="want-to-read" onClick={handleAddToShelf} disabled={loading}>
                 {loading ? "Loading..." : "Want to Read"}
+                {shelfStatus === "want to read" && <span> ✔</span>}
             </button>
 
         </div>
