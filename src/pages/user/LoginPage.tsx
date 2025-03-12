@@ -79,6 +79,7 @@ const LoginPage = () => {
             disabled={isLoading} />
 
           <button
+            style={{ marginTop: "1em" }}
             className="btn login-btn"
             type="submit"
             disabled={isLoading}>

@@ -60,6 +60,7 @@ const SignUpPage = () => {
             disabled={isLoading} />
 
           <button
+            style={{ marginTop: "1em" }}
             className="btn signin-btn"
             type="submit"
             disabled={isLoading}>
