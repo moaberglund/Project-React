@@ -7,6 +7,7 @@ import SignUpPage from "./pages/user/SignUpPage";
 import LoginPage from "./pages/user/LoginPage";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UpdateBookReviewPage from "./pages/review/update";
+import UpdateUser from "./pages/user/update";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,14 @@ export const router = createBrowserRouter([
                 element: (
                     <ProtectedRoute>
                         <UserPage />
+                    </ProtectedRoute>
+                )
+            },
+            {
+                path: "user/update/:id",
+                element: (
+                    <ProtectedRoute>
+                        <UpdateUser />
                     </ProtectedRoute>
                 )
             },
