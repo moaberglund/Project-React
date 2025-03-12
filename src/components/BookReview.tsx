@@ -39,10 +39,6 @@ const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt,
         }
     }, [user]);  // Runs when user changes
 
-    // Function to render stars based on rating
-    const renderStars = (rating: number) => {
-        return "★".repeat(rating) + "☆".repeat(5 - rating); // 5 is max
-    };
 
     // Function to delete a review
     const deleteReview = async () => {
@@ -71,27 +67,38 @@ const BookReview = ({ _id, rating, title, text, user, book_id, likes, createdAt,
 
 
     return (
-        <div className="review">
-            <div className="flex-1">
-                <h2>{username} rated it</h2>
-                <span>{renderStars(rating)} ({rating}/5)</span>
+        <div className="review flex">
+            <div className="flex-2">
+                <div><h2 className="username" style={{ display: "inline" }}>{username}</h2><h2 style={{ display: "inline" }}> rated it</h2></div>
+
+                {Array.from({ length: 5 }, (_, i) => (
+                    <span key={i} style={{ color: rating && i < rating ? "gold" : "lightgray" }}>
+                        {i < rating ? "★" : "☆"}
+                    </span>
+                ))}
             </div>
 
-            <div className="flex-3">
+            <div className="flex-5">
                 <h3>{title}</h3>
                 <p>{text}</p>
-                <p>{likes} likes</p>
-                <p>Created: {createdAt ? new Date(createdAt).toLocaleDateString() : "Unknown"}</p>
-                <p>Updated: {updatedAt ? new Date(updatedAt).toLocaleDateString() : "Unknown"}</p>
 
-                {currentUserId === user._id && (
-                    <>
-                        <button onClick={() => navigate(`/review/${_id}`)}>Edit</button>
-                        <button onClick={deleteReview}>Delete</button>
-                    </>
-                )}
+                <div className="dates">
+                    <p>Created: {createdAt ? new Date(createdAt).toLocaleDateString() : "Unknown"}</p>
+                    <p>Updated: {updatedAt ? new Date(updatedAt).toLocaleDateString() : "Unknown"}</p>
+                </div>
 
-                <button>Like</button>
+                <div className="buttons">
+                    {currentUserId === user._id && (
+                        <>
+                            <button onClick={() => navigate(`/review/${_id}`)}>Edit</button>
+                            <button onClick={deleteReview}>Delete</button>
+                        </>
+                    )}
+
+                    <button>❤️</button>
+                    <p style={{ marginTop: "1em" }}>{likes} likes</p>
+
+                </div>
             </div>
         </div>
     );
