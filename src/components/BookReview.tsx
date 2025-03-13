@@ -57,7 +57,6 @@ const BookReview = ({ _id, rating, title, text, user, likes, createdAt, updatedA
 
             if (response.ok) {
                 setDeleted(true);
-                if (onReviewDeleted) onReviewDeleted();
             } else {
                 const errorData = await response.json();
                 alert(errorData.message || "Failed to delete the review.");
@@ -67,6 +66,25 @@ const BookReview = ({ _id, rating, title, text, user, likes, createdAt, updatedA
             alert("An error occurred while deleting the review.");
         }
     };
+
+    // Delay
+    useEffect(() => {
+        if (deleted) {
+            const fadeOutTimer = setTimeout(() => {
+                document.querySelector(".review.deleted")?.classList.add("fade-out");
+            }, 1000); // Start fade-out efter 1 second
+    
+            const removeTimer = setTimeout(() => {
+                if (onReviewDeleted) onReviewDeleted();
+            }, 2000);
+    
+            return () => {
+                clearTimeout(fadeOutTimer);
+                clearTimeout(removeTimer);
+            };
+        }
+    }, [deleted, onReviewDeleted]);
+    
 
     if (deleted) {
         return <div className="review deleted">📌 This review has been deleted.</div>;
