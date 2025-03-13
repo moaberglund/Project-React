@@ -48,9 +48,9 @@ const UserPage = () => {
     return (
         <>
             <div className="user-page">
-                {loading && <p>Loading...</p>}
-                <div className="user-info grid">
 
+                <div className="user-info grid">
+                    {loading && <p>Loading...</p>}
                     <div>
                         {/*Firstname Lastname*/}
                         <h1> {user ? user.firstname : ""} {user ? user.lastname : ""}</h1>
@@ -65,7 +65,7 @@ const UserPage = () => {
                             {user?.country ?? ""}
                         </p>
 
-                        <button style={{marginTop: '1em'}} className="btn-green" onClick={() => navigate(`/user/update/${id}`)}><FaGear /> Edit user</button>
+                        <button style={{ marginTop: '1em' }} className="btn-green" onClick={() => navigate(`/user/update/${id}`)}><FaGear /> Edit user</button>
                     </div>
                     <div>
                         <button className="btn-logout" onClick={logout}><FaPowerOff /></button>
