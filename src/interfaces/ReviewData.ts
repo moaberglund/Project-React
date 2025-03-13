@@ -8,6 +8,7 @@ interface ReviewData {
     likes?: number;
     createdAt?: Date;
     updatedAt?: Date;
+    onReviewDeleted?: () => void;
 }
 
 export default ReviewData;

@@ -59,6 +59,12 @@ const BookPage = () => {
         fetchReviews();
     };
 
+    // Fetch reviews after deleting a review
+    const handleReviewDeleted = () => {
+        fetchReviews();
+    };
+
+
 
     if (loading) return <p>Loading book...</p>;
     if (error || !book) return <p>{error || "Book not found"}</p>;
@@ -98,7 +104,7 @@ const BookPage = () => {
 
             <h2 style={{ marginTop: '1em', marginBottom: '0.5em' }}>Reviews</h2>
             {reviews.length > 0 ? (
-                reviews.map((review) => <BookReview key={review._id} {...review} />)
+                reviews.map((review) => <BookReview key={review._id} {...review} onReviewDeleted={handleReviewDeleted} />)
             ) : (
                 <p>No reviews yet.</p>
             )}
