@@ -37,22 +37,28 @@ const BookPage = () => {
         if (id) fetchBook();
     }, [id]);
 
+    const fetchReviews = async () => {
+        try {
+            const response = await fetch(`https://read-y-api.onrender.com/review/book/${id}`);
+            if (response.ok) {
+                const data = await response.json();
+                setReviews(data);
+            }
+        } catch (error) {
+            console.error("Error fetching reviews:", error);
+        }
+    };
+
     // Hämta recensioner av boken från ditt API
     useEffect(() => {
-        const fetchReviews = async () => {
-            try {
-                const response = await fetch(`https://read-y-api.onrender.com/review/book/${id}`);
-                if (response.ok) {
-                    const data = await response.json();
-                    setReviews(data);
-                }
-            } catch (error) {
-                console.error("Error fetching reviews:", error);
-            }
-        };
-
         if (id) fetchReviews();
     }, [id]);
+
+    // Fetch reviews when creating a new review
+    const handleReviewSubmitted = () => {
+        fetchReviews();
+    };
+
 
     if (loading) return <p>Loading book...</p>;
     if (error || !book) return <p>{error || "Book not found"}</p>;
@@ -88,7 +94,7 @@ const BookPage = () => {
                 </button>
             )}
 
-            {user ? <CreateBookReview /> : <NavLink style={{ marginLeft: '1em', color: 'grey', textDecoration: 'none' }} to="/user/login">Login to create a review</NavLink>}
+            {user ? <CreateBookReview onReviewSubmitted={handleReviewSubmitted} /> : <NavLink style={{ marginLeft: '1em', color: 'grey', textDecoration: 'none' }} to="/user/login">Login to create a review</NavLink>}
 
             <h2 style={{ marginTop: '1em', marginBottom: '0.5em' }}>Reviews</h2>
             {reviews.length > 0 ? (

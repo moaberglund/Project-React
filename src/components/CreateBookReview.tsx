@@ -4,7 +4,11 @@ import ReviewData from "../interfaces/ReviewData"
 import ReviewError from "../interfaces/ReviewError";
 import * as Yup from "yup";
 
-const CreateBookReview = () => {
+interface CreateBookReviewProps {
+    onReviewSubmitted?: () => void;
+}
+
+const CreateBookReview = ({ onReviewSubmitted }: CreateBookReviewProps) => {
 
     const { bookId } = useParams();
     const storedUser = localStorage.getItem("user");
@@ -81,7 +85,9 @@ const CreateBookReview = () => {
                 book_id: bookId || window.location.pathname.split("/")[2]
             });
 
-
+            if (onReviewSubmitted) {
+                onReviewSubmitted();
+            }
 
         } catch (errors) {
             const validationErrors: ReviewError = {};
@@ -122,7 +128,7 @@ const CreateBookReview = () => {
 
 
                 <input
-                placeholder="Review Title"
+                    placeholder="Review Title"
                     id="title"
                     name="title"
                     value={reviewData.title}
