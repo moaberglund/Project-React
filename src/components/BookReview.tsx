@@ -7,6 +7,7 @@ import LikeButton from "./LikeButton";
 const BookReview = ({ _id, rating, title, text, user, likes, createdAt, updatedAt, onReviewDeleted }: ReviewData) => {
     const [username, setUsername] = useState<string>("Unknown user");
     const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+    const [deleted, setDeleted] = useState<boolean>(false);
     const navigate = useNavigate();
 
     // Fetch current user ID from localStorage
@@ -36,7 +37,7 @@ const BookReview = ({ _id, rating, title, text, user, likes, createdAt, updatedA
         if (typeof user === "object" && user !== null && "username" in user) {
             setUsername((user as { username: string }).username);  // If user is an object, set username
         } else if (typeof user === "string") {
-            fetchUsername(user);  // Om user is ID (string), get username
+            fetchUsername(user);  // If user is ID (string), get username
         }
     }, [user]);  // Runs when user changes
 
@@ -55,7 +56,7 @@ const BookReview = ({ _id, rating, title, text, user, likes, createdAt, updatedA
             });
 
             if (response.ok) {
-                alert("Review deleted successfully!");
+                setDeleted(true);
                 if (onReviewDeleted) onReviewDeleted();
             } else {
                 const errorData = await response.json();
@@ -67,6 +68,9 @@ const BookReview = ({ _id, rating, title, text, user, likes, createdAt, updatedA
         }
     };
 
+    if (deleted) {
+        return <div className="review deleted">📌 This review has been deleted.</div>;
+    }
 
     return (
         <div className="review flex">
