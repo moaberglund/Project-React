@@ -23,7 +23,9 @@ const SignUpPage = () => {
       await register({ username, password });
       navigate('/user/login');
     } catch (err) {
-      setError("Failed to register. Control username and password");
+      if (err instanceof Error) {
+        setError(err.message);  // Message from Yup or API
+      }
     } finally {
       setIsLoading(false);
     }
@@ -66,7 +68,7 @@ const SignUpPage = () => {
             {isLoading ? 'Signing up...' : 'Sign up'}
           </button>
 
-          {error && <p style={{ color: "red", fontSize: "0.9em", margin: "1em 0 2em 0"}}>{error}</p>}
+          {error && <p style={{ color: "red", fontSize: "0.9em", margin: "1em 0 2em 0" }}>{error}</p>}
 
         </form>
 
