@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, ReactNode, useEffect } from 'react';
 import { User, LoginCredentials, RegisterCredentials, AuthResponse, AuthContextType } from '../interfaces/auth.types';
+import * as yup from 'yup';
 
 // Create the context
 const AuthContext = createContext<AuthContextType | null>(null);
@@ -18,9 +19,18 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
+    // Yup
+    const registerSchema = yup.object().shape({
+        username: yup.string().required("Username is required").min(5, "Username must be at least 5 characters long").max(20, "Username cannot exceed 20 characters"),
+        password: yup.string().required("Password is required").min(8, "Password must be at least 8 characters long").max(20, "Password cannot exceed 20 characters")
+    });
+
     // Functions
     const register = async (credentials: RegisterCredentials) => {
         try {
+            // Validate credentials
+            await registerSchema.validate(credentials);
+
             // Make API call
             const res = await fetch(`${API}/user/register`, {
                 method: 'POST',
@@ -41,7 +51,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
             setUser(data.user);
 
         } catch (err) {
-            throw err;
+            if (err instanceof yup.ValidationError) {
+                throw new Error(err.message);  // Validation error
+            } else {
+                throw new Error("An error occurred during registration");
+            }
         }
     }
 
