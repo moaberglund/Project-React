@@ -4,7 +4,7 @@ import BookshelfData from "../interfaces/BookshelfData";
 
 const UserBookshelf = () => {
     const [bookshelf, setBookshelf] = useState<BookshelfData[]>([]);
-    const [books, setBooks] = useState<any[]>([]); // Här lagrar vi detaljer från Google Books API
+    const [books, setBooks] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -54,9 +54,9 @@ const UserBookshelf = () => {
         if (bookshelf.length === 0) return;
 
         const fetchAllBookDetails = async () => {
-            const bookDetailsPromises = bookshelf.map(book => fetchBookDetails(book.book_id));
-            const resolvedBooks = await Promise.all(bookDetailsPromises);
-            setBooks(resolvedBooks.filter(book => book !== null)); // Filtrera bort misslyckade anrop
+            const bookDetailsPromises = bookshelf.map(book => fetchBookDetails(book.book_id)); // Create an array of promises
+            const resolvedBooks = await Promise.all(bookDetailsPromises); // Wait for all promises to resolve
+            setBooks(resolvedBooks.filter(book => book !== null)); // Filter out any failed promises
         };
 
         fetchAllBookDetails();
@@ -71,7 +71,7 @@ const UserBookshelf = () => {
                 <p>No books found in your bookshelf!</p>
             ) : (
                 books.map((book, index) => {
-                    const shelfBook = bookshelf[index]; // Hitta motsvarande objekt från bookshelf
+                    const shelfBook = bookshelf[index]; // Find the corresponding bookshelf item
                     return (
                         <BookshelfItem
                             key={book.id}
