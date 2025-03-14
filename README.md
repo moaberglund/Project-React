@@ -1,54 +1,35 @@
-# React + TypeScript + Vite
+# Read-y
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Read-y is a full-stack web application designed for book lovers to explore, review, and manage their reading experiences. The project includes user authentication, book search functionality via Google Books API, and a system for users to leave and manage reviews.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User Authentication**: Secure sign-up and login using JWT authentication.
+- **Book Search**: Integrated with Google Books API to allow users to search for books.
+- **Review System**: Users can write, edit, and delete book reviews.
+- **Private Bookshelf**: Users can add books they want to read to their private bookshelf.
+- **Show Support**: Users can give likes to reviews.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Frontend:
+- React
+- React Router
+- TypeScript
+- SCSS
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### Backend:
+- Node.js
+- Express
+- MongoDB (Mongoose)
+- JWT Authentication
+- Google Books API
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Usage
+- Sign up or log in to your account.
+- Search for books using the Google Books API.
+- Add books to your bookshelf.
+- Leave reviews on books you’ve read.
+- Edit or delete your reviews anytime.
+- Leave a like on a review.
