@@ -3,6 +3,7 @@
 header {
   background-color: variables.$header-background;
   margin-bottom: 2em;
+  padding: 0.5em 1em;
 
   .header {
     padding: 0.5em 1em;
@@ -16,14 +17,22 @@ header {
     }
 
     ul {
+      display: flex;
       list-style: none;
+      justify-content: space-between;
+      gap: 2em;
       li {
         display: inline-block;
         margin-right: 1em;
+        font-size: 1.2em;
+        font-weight: 500;
 
         a {
           text-decoration: none;
           color: variables.$black;
+          display: flex;
+          align-items: center;
+          gap: 0.5em;
         }
       }
     }
