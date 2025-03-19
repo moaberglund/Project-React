@@ -147,15 +147,6 @@ const UpdateUser = () => {
                 {errors?.lastname && <p>{errors.lastname}</p>}
 
                 <input
-                    placeholder={user?.country ? user.country : "Country"}
-                    type="text"
-                    name="country"
-                    id="country"
-                    value={user?.country || ""}
-                    onChange={handleChange} />
-                {errors?.country && <p>{errors.country}</p>}
-
-                <input
                     placeholder={user?.city ? user.city : "City"}
                     type="text"
                     name="city"
@@ -164,9 +155,18 @@ const UpdateUser = () => {
                     onChange={handleChange} />
                 {errors?.city && <p>{errors.city}</p>}
 
+                <input
+                    placeholder={user?.country ? user.country : "Country"}
+                    type="text"
+                    name="country"
+                    id="country"
+                    value={user?.country || ""}
+                    onChange={handleChange} />
+                {errors?.country && <p>{errors.country}</p>}
+
                 <div style={{ marginTop: "1em" }} className="grid">
-                    <button style={{ marginRight: "1em"}} onClick={() => navigate(-1)}>Cancel</button>
-                    <button style={{ marginLeft: "1em"}} className="btn-update" type="submit">Update User</button>
+                    <button style={{ marginRight: "1em" }} onClick={() => navigate(-1)}>Cancel</button>
+                    <button style={{ marginLeft: "1em" }} className="btn-update" type="submit">Update User</button>
 
                 </div>
 
